@@ -2,7 +2,7 @@
     session_start();
 
     /* 資料庫連線資訊 */
-    define('DB_HOST', 'localhost1');
+    define('DB_HOST', 'localhost');
     define('DB_DATABASE', 'game');
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', 'root');
