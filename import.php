@@ -1,6 +1,18 @@
 <?php
     require_once __DIR__ . '/bootstrap.php';
     require_once __DIR__ . '/partials/header.php';
+
+    // 登入沒？
+    if (!isset($_SESSION['user'])) {
+        header('Location: /');
+        die();
+    }
+
+    // 管理者？
+    if (!is_null($_SESSION['user']['class'])) {
+        header('Location: /');
+        die();
+    }
 ?>
 
 

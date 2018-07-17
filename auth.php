@@ -61,7 +61,7 @@
         // }
 
         if ($result) {
-            $_SESSION['user'] = ['id' => $user['id'], 'name' => $user['username']];
+            $_SESSION['user'] = ['id' => $user['id'], 'name' => $user['username'], 'class' => $user['class']];
             header("Location: /");
             die();
         } else {

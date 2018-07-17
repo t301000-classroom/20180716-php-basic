@@ -1,6 +1,13 @@
 <?php
     require_once __DIR__ . '/bootstrap.php';
 
+    // 登入沒？
+    if (!isset($_SESSION['user'])) {
+        header('Location: /');
+        die();
+    }
+
+
     // 沒有檔案
     if (!isset($_FILES['list'])) {
         header('Location: import.php');
@@ -37,10 +44,12 @@
 
     while($line_array = fgetcsv($handler, 1000)) {
         // var_dump($line_array);
-        $class = $line_array[0];
-        $cnum = (int) $line_array[1];
-        $name = $line_array[2];
-        $gender = $line_array[3];
+        // $class = $line_array[0];
+        // $cnum = (int) $line_array[1];
+        // $name = $line_array[2];
+        // $gender = $line_array[3];
+        list($class, $cnum, $name, $gender) = $line_array;
+        $cnum = (int) $cnum;
 
         $stmt->execute();
     }

@@ -12,6 +12,9 @@
                         <!-- 班級名單 -->
                         <div class="col-12">
                             <h2 class="text-center">Hello</h2>
+                            <?php
+                              if (isset($_SESSION['user'])) var_dump($_SESSION['user']);
+                            ?>
                         </div>
                     </div>
                 </div>
