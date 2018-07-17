@@ -9,6 +9,19 @@
         die();
     }
 
+
+    // $sql = "SELECT * FROM users WHERE username = '{$email}' LIMIT 1";
+    $sql = "SELECT * FROM users WHERE username = :username LIMIT 1";
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':username', $email);
+    $stmt->execute();
+
+    $result = $stmt->fetch();
+    var_dump($result);
+    die();
+
+
+
     $fake_user = [
         'username' => 'demo@gg.gg',
         'password' => password_hash('123456', PASSWORD_DEFAULT)
