@@ -24,7 +24,7 @@
     // 有 id
     // $sql = "DELETE FROM students WHERE id = 123";  // 刪除1筆
     // $sql = "DELETE FROM students WHERE id IN (123, 200, 50)"; // 刪除多筆
-    $sql = "DELETE FROM students WHERE id = :id"; // 刪除多筆
+    $sql = "DELETE FROM students WHERE id = :id"; // 刪除1筆
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':id', $id);
     $stmt->execute();
