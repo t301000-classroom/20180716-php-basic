@@ -61,13 +61,13 @@
                             <div class="card-body">
                                 <?php
                                   if (isset($_SESSION['user'])) {
-                                      echo $_SESSION['user'];
+                                      var_dump($_SESSION['user']);
                                   }
 
                                 ?>
                                 <form class="form-signin" action="auth.php" method="post">
                                     <div class="form-label-group">
-                                        <input type="email" id="inputEmail" class="form-control flex-grow-1" placeholder="Email" required name="email">
+                                        <input type="text" id="inputEmail" class="form-control flex-grow-1" placeholder="Email" required name="email">
                                         <label for="inputEmail">Email</label>
                                     </div>
                                     <div class="form-label-group">

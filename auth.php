@@ -16,25 +16,33 @@
     $stmt->bindValue(':username', $email);
     $stmt->execute();
 
-    $result = $stmt->fetch();
-    var_dump($result);
-    die();
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    // var_dump($result);
+    // die();
 
-
-
-    $fake_user = [
-        'username' => 'demo@gg.gg',
-        'password' => password_hash('123456', PASSWORD_DEFAULT)
-    ];
-
-    $result = false;
-    if ($email === $fake_user['username']) {
-        $result = password_verify($password, $fake_user['password']);
+    // 登入失敗：沒有資料
+    if (! $user) {
+        header("Location: /");
+        die();
     }
 
+    // 有 user 資料
+    // 檢查密碼
+    $result = password_verify($password, $user['password']);
+
+    // $fake_user = [
+    //     'username' => 'demo@gg.gg',
+    //     'password' => password_hash('123456', PASSWORD_DEFAULT)
+    // ];
+
+    // $result = false;
+    // if ($email === $fake_user['username']) {
+    //     $result = password_verify($password, $fake_user['password']);
+    // }
+
     if ($result) {
-        $_SESSION['user'] = $email;
-        header("Location: ./test.php");
+        $_SESSION['user'] = ['id' => $user['id'], 'name' => $user['username']];
+        header("Location: /");
         die();
     } else {
         echo "帳號或密碼錯誤";
