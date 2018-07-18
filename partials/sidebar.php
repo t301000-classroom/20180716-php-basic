@@ -44,12 +44,12 @@
             <div class="card-header">功能選單</div>
             <div class="card-body">
                 <div class="list-group list-group-flush menu-list">
-                    <a href="#" class="list-group-item list-group-item-action">報名結果</a>
-                    <a href="#" class="list-group-item list-group-item-action active">
+                    <a href="result.php" class="list-group-item list-group-item-action">報名結果</a>
+                    <a href="signup.php" class="list-group-item list-group-item-action">
                         進行報名
                     </a>
-                    <a href="#" class="list-group-item list-group-item-action">匯入學生名單</a>
-                    <a href="#" class="list-group-item list-group-item-action">新增學生</a>
+                    <a href="import.php" class="list-group-item list-group-item-action">匯入學生名單</a>
+                    <a href="edit-student.php" class="list-group-item list-group-item-action">新增學生</a>
                 </div>
             </div>
         </div>
