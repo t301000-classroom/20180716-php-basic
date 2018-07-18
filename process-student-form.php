@@ -13,7 +13,7 @@
         die();
     }
 
-    $data = isset($_POST['data']) || count($_POST['data']) === 0 ? $_POST['data'] : null;
+    $data = isset($_POST['data']) || count($_POST['data']) !== 0 ? $_POST['data'] : null;
 
     if (is_null($data)) {
         header('Location: edit-student.php');
@@ -39,7 +39,7 @@
     }
 
     header('Location: signup.php');
-    
+
     function add() {
         global $db, $data;
         // 新增
@@ -54,5 +54,14 @@
 
 
     function update() {
-        echo '更新資料';
+        global $db, $data;
+        // 更新
+        $sql = "UPDATE students SET cnum = :cnum, name = :name, gender = :gender WHERE id = :id";
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':id', $_POST['id']);
+        $stmt->bindValue(':cnum', $data['cnum']);
+        $stmt->bindValue(':name', $data['name']);
+        $stmt->bindValue(':gender', $_POST['gender']);
+        $stmt->execute();
+
     }
