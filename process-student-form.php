@@ -27,13 +27,32 @@
         die();
     }
 
-    // 新增
-    $sql = "INSERT INTO students (class, cnum, name, gender) VALUES (:class, :cnum, :name, :gender)";
-    $stmt = $db->prepare($sql);
-    $stmt->bindValue(':class', $_SESSION['user']['class']);
-    $stmt->bindValue(':cnum', $data['cnum']);
-    $stmt->bindValue(':name', $data['name']);
-    $stmt->bindValue(':gender', $_POST['gender']);
-    $stmt->execute();
+    $op = isset($_POST['op']) ? $_POST['op'] : null;
+    switch ($op) {
+        case 'add':
+            add();
+            break;
+
+        case 'edit':
+            update();
+            break;
+    }
 
     header('Location: signup.php');
+    
+    function add() {
+        global $db, $data;
+        // 新增
+        $sql = "INSERT INTO students (class, cnum, name, gender) VALUES (:class, :cnum, :name, :gender)";
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue(':class', $_SESSION['user']['class']);
+        $stmt->bindValue(':cnum', $data['cnum']);
+        $stmt->bindValue(':name', $data['name']);
+        $stmt->bindValue(':gender', $_POST['gender']);
+        $stmt->execute();
+    }
+
+
+    function update() {
+        echo '更新資料';
+    }

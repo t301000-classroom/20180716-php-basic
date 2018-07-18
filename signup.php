@@ -66,7 +66,7 @@
                                     <td class="align-middle"><?= $student['gender'] ?></td>
                                     <td class="text-left">
                                       <div class="btn-group btn-group-sm" role="group">
-                                        <a class="btn btn-outline-primary">修改</a>
+                                        <a href="edit-student.php?id=<?= $student['id'] ?>" class="btn btn-outline-primary">修改</a>
                                         <a href="delete-student.php?id=<?= $student['id'] ?>" class="btn btn-outline-danger">刪除</a>
                                       </div>
                                     </td>

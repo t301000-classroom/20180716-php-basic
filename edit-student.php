@@ -1,6 +1,12 @@
 <?php
     require_once __DIR__ . '/bootstrap.php';
     require_once __DIR__ . '/partials/header.php';
+
+    // 新增 或 編輯 ？
+    $op = isset($_GET['id']) ? 'edit' : 'add';
+
+
+
 ?>
 
 
@@ -13,7 +19,7 @@
 
                       <!-- 新增 / 修改 學生資料 -->
                       <div class="col-12">
-                        <h2 class="text-center">新增學生資料</h2>
+                        <h2 class="text-center"><?= $op === 'add' ? '新增' : '編輯' ?>學生資料</h2>
                         <form class="form-data" action="process-student-form.php" method="post">
 
                           <div class="form-label-group">
@@ -38,7 +44,7 @@
 
                           <div class="text-center">
                             <button class="btn btn-lg btn-primary" type="submit">確定</button>
-                            <input type="hidden" name="op" value="add">
+                            <input type="hidden" name="op" value="<?= $op ?>">
                           </div>
                         </form>
                       </div>
