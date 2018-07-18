@@ -2,16 +2,10 @@
     require_once __DIR__ . '/bootstrap.php';
 
     // 登入沒？
-    if (!isset($_SESSION['user'])) {
-        header('Location: /');
-        die();
-    }
+    mustLogin();
 
     // 導師？
-    if (is_null($_SESSION['user']['class'])) {
-        header('Location: /');
-        die();
-    }
+    mustBeTeacher();
 
     $data = isset($_POST['data']) || count($_POST['data']) !== 0 ? $_POST['data'] : null;
 
@@ -28,6 +22,7 @@
     }
 
     $op = isset($_POST['op']) ? $_POST['op'] : null;
+    dd($op, 1);
     switch ($op) {
         case 'add':
             add();

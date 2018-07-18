@@ -1,6 +1,9 @@
 <?php
     session_start();
 
+    require_once __DIR__ . '/utils.php';
+    require_once __DIR__ . '/helper.php';
+
     /* 資料庫連線資訊 */
     define('DB_HOST', 'localhost');
     define('DB_DATABASE', 'game');
